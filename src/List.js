@@ -75,6 +75,78 @@ class List {
         return list
     }
 
+    splice (start, deleteCount, ...args) {
+        let list = new List(),
+            len  = this.length,
+            cloneList = this.slice()
+        if (start < 0) start = len + start
+        if (start > len - 1) start = len - 1
+        if (deleteCount == undefined) {
+            for (let i = start; i < len; i++) {
+                if(i > len - 1) break
+                list[i - start] = this[i]
+                list.length++
+                delete this[i]
+                this.length--
+            }
+        } else {
+            if (deleteCount + start > len) {
+                deleteCount = len - start
+            }
+            if (args.length > 0) {
+                if (args.length === deleteCount) {
+                    for (let j = 0; j < deleteCount; j++) {
+                        if (start > len - 1) break
+                        list[j] = cloneList[j + start]
+                        list.length++
+                        this[j + start] = args[j]
+                    }
+                } else if (args.length > deleteCount) {
+                    let span = args.length - deleteCount
+                    this.length += span
+                    for (let j = len + span - 1; j >= start; j--) {
+                        this[j] = this[j - span]
+                    }
+                    for (let k = start; k < start + args.length; k++) {
+                        if (k > span) {
+                            list[k - start] = this[span + start]
+                        }
+                        this[k] = args[k - start]
+                        
+                    }
+                } else if (args.length < deleteCount) {
+                    for (let j = 0; j < deleteCount; j++) {
+                        if (start > len - 1) break
+                        list[j] = cloneList[j + start]
+                        list.length++
+        
+                        for(let k = 0; k < this.length; k++) { 
+                            if (k + start > this.length - 1) break
+                            this[k + start] = this[ k + start + 1]                    
+                        }
+                        delete this[--this.length]
+                    }
+                    this.push(...args)
+                }
+            } else {
+                
+                for (let j = 0; j < deleteCount; j++) {
+                    if (start > len - 1) break
+                    list[j] = cloneList[j + start]
+                    list.length++
+    
+                    for(let k = 0; k < this.length; k++) { 
+                        if (k + start > this.length - 1) break
+                        this[k + start] = this[ k + start + 1]                    
+                    }
+                    delete this[--this.length]
+                }
+            }
+            
+        }
+        return list
+    }
+
     concat (list) {
         let cloneList = this.slice()
         list.forEach(function (value) {
