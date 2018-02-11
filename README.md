@@ -2,6 +2,22 @@
 Data structure with Javascript
 使用Javascript模拟数据结构及算法
 
+## Install 安装
+使用git下载该库 `data-structure`
+       
+    $ git clone git@github.com:loshafee/data-structure.git
+
+也可以直接下载 [zip压缩包](https://github.com/loshafee/data-structure/archive/master.zip)，解压。
+然后进入到 `data-structrue` 目录，安装依赖
+
+    $ cd data-structure
+    $ npm install
+
+## Test测试脚本
+使用 `Mocha`测试脚本， `test` 目录下的为测试文件，运行 `mocha` 该目录下的测试文件跑起来
+
+    $ mocha
+
 ## List
 模拟数组，与Array操作一致，List是使用Object对象模拟的，List的下标访问实质是对对象Object的数字属性访问
 
@@ -36,3 +52,7 @@ Data structure with Javascript
     * `toString` 列表的字符串表示
     * `join(separator)` 返回使用字符串 `separator` 分隔列表元素后的字符串
     * `forEach(callback[, thisArgs])` 遍历函数，`callback`为遍历的函数，有三个参数`value`, `key`以及`list`, `thisArgs` 为函数内部 `this` 作用域
+
+
+## License
+MIT
