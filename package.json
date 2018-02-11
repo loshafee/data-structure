@@ -1,0 +1,30 @@
+{
+  "name": "data-structure",
+  "version": "0.0.1",
+  "description": "data-structrue description in Javascript",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loshafee/data-structure.git"
+  },
+  "keywords": [
+    "Javascript",
+    "data-structrue",
+    "List"
+  ],
+  "author": "loshafee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loshafee/data-structure/issues"
+  },
+  "homepage": "https://github.com/loshafee/data-structure#readme",
+  "devDependencies": {
+    "mocha": "^5.0.0"
+  }
+}
