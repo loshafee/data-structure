@@ -14,7 +14,24 @@
          * 
          */
         constructor (...args) {
-            this.length = 0
+            let len = 0
+            Object.defineProperty(this, 'length', {
+                enumerable: false,
+                configurable: true,
+                get () {
+                    return len
+                },
+                set(value) {
+                    /** length可读可写，通过设置list的length属性改变长度 */
+                    if (typeof value !== 'number') throw RangeError('Invalid array length')
+                    if (len > value) {
+                        for (let i = value; i < len; i++) {
+                            delete this[i]
+                        }
+                    }
+                    len = value
+                }
+            })
             if (args.length === 1 && typeof args[0] === 'number') {
                 this.length = args[0]
             } else {
