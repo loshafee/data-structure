@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Data Structure - List</title>
-</head>
-<body>
+<html>
+  <head>
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mocha.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="mocha.js"></script>
+    <script>mocha.setup('bdd');</script>
+    <script src="./chai.js"></script>
     <script src="../src/List.js"></script>
+    <script src="./List.test.js"></script>
     <script>
-        const list = new List(1,2,3)
-        const arr = ['a', 'b', 'c']
+      mocha.run();
     </script>
-</body>
+  </body>
 </html>

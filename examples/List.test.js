@@ -1,5 +1,4 @@
-const assert = require('chai').assert
-const List   = require('../src/List')
+const assert = chai.assert
 
 describe('List', function () {
   describe('#constructor', function () {
