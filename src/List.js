@@ -146,7 +146,6 @@
                     this.length--
                 }
             } else {
-                console.log(start)
                 if (deleteCount + start > len) {
                     deleteCount = len - start
                 }
@@ -223,9 +222,18 @@
          * @return 返回数组的字符串形式
          */
         toString () {
+            return this.join()
+        }
+
+        /**
+         * 数组转换成字符串
+         * @param {String} separator - 元素之间的分隔符
+         * @return {String} - 返回以separator分隔元素的字符串
+         */
+        join (separator = ',') {
             let str = ''
             for (let i = 0; i < this.length - 1; i++) {
-                str += this[i] + ','
+                str += this[i] + separator
             }
             str += this[this.length - 1]
             return (this[this.length - 1]) ? str : ''
