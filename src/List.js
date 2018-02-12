@@ -19,7 +19,10 @@
                 enumerable: false,
                 configurable: true,
                 get () {
-                    return len
+                    let keysLen = Object.keys(this).filter((value) => {
+                        if (!isNaN(+value)) return value
+                    }).length
+                    return (keysLen > len) ? keysLen : len
                 },
                 set(value) {
                     /** length可读可写，通过设置list的length属性改变长度 */
@@ -32,6 +35,7 @@
                     len = value
                 }
             })
+            
             if (args.length === 1 && typeof args[0] === 'number') {
                 this.length = args[0]
             } else {
@@ -297,6 +301,7 @@
 
         /**
          * @method 反转数组
+         * @return {List} 
          */
         reverse () {
             let temp
@@ -309,14 +314,113 @@
         }
 
         /**
-         * @method 遍历数组
-         * @param {Function} callback 回调函数，包含三个参数（value, index, array）
-         * @param {Global} thisArg - 回调函数中的this作用域
+         * @method 迭代方法 对数组列表中的每一项运行给定函数
+         * @param {Function} callback 迭代函数，包含三个参数（value, index, array）
+         * @param {Global} thisArg - 迭代函数中的this作用域
          */
         forEach (callback, thisArg) {
+            if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
             for (let i = 0; i < this.length; i++) {
                 callback.call(thisArg ? thisArg : null, this[i], i, this)
             }
+        }
+
+        /**
+         * @method 迭代方法 列表数组中只要有一个为true则返回true
+         * @param {Function} callback - 迭代函数
+         * @param {Global} thisArg - 迭代函数this作用域
+         */
+        some (callback, thisArg) {
+            if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')            
+            for (let i = 0; i < this.length; i++) {
+                if (callback.call(thisArg ? thisArg : null, this[i], i, this)) {
+                    return true
+                }
+            }
+            return false
+        }
+
+        /**
+         * @method 迭代方法 列表数组中都为true才返回true，否则返回false
+         * @param {Function} callback - 迭代函数
+         * @param {Global} thisArg - 迭代函数this作用域
+         */
+        every (callback, thisArg) {
+            if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')            
+            for (let i = 0; i < this.length; i++) {
+                if (!callback.call(thisArg ? thisArg : null, this[i], i, this)) {
+                    return false
+                }
+            }
+            return true
+        }
+
+        /**
+         * @method 对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组
+         * @param {Function} callback - 迭代函数
+         * @param {*} thisArg - 迭代函数this作用域
+         */
+        map (callback, thisArg) {
+            if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')            
+            let list = new List()
+            for (let i = 0; i < this.length; i++) {
+                list[i] = callback.call(thisArg ? thisArg : null, this[i], i, this)
+            }
+            return list
+        }
+
+        /**
+         * @method 对数组中的每一项运行给定函数，返回该函数会返回true 的项组成的数组
+         * @param {*} callback - 迭代函数
+         * @param {*} thisArg - 迭代函数this作用域
+         */
+        filter (callback, thisArg) {
+            if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')            
+            let list = new List()            
+            for (let i = 0; i < this.length; i++) {
+                if (callback.call(thisArg ? thisArg : null, this[i], i, this)) {
+                    list.push(this[i])
+                }
+            }
+            return list
+        }
+
+        /**
+         * @method 归并，迭代从前到后数组列表中的所有值，返回一个按条件计算的最终值
+         * @param {Function} callback - 遍历函数
+         * @param {Mixed} initialValue - 初始值，默认首项
+         */
+        reduce (callback, initialValue) {
+            if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')            
+            let i = 0
+            if (typeof initialValue === 'undefined') {
+                initialValue = this[0]
+                i = 1
+            }
+            let accumulator = initialValue
+            for ( ; i < this.length; i++) {
+                accumulator = callback(accumulator, this[i], i, this)
+            }
+            return accumulator
+        }
+
+        /**
+         * @method 归并，迭代从后到前数组列表中的所有值，返回一个按条件计算的最终值
+         * @param {Function} callback - 遍历函数
+         * @param {Mixed} initialValue - 初始值，默认首项
+         */
+        reduceRight (callback, initialValue) {
+            if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')            
+            let i = this.length - 1
+            if (typeof initialValue === 'undefined') {
+                initialValue = this[this.length - 1]
+                i--
+            }
+            let accumulator = initialValue
+            for (; i >= 0; i--) {
+                accumulator = callback(accumulator, this[i], i, this)
+            }
+            return accumulator
         }
     }
 
