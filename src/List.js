@@ -139,7 +139,6 @@
             for (let i = start; i < end; i++) {
                 if (i > this.length - 1) break
                 list[i - start] = this[i]
-                list.length++
             }
             return list
         }
@@ -161,8 +160,8 @@
             if (deleteCount == undefined) {
                 for (let i = start; i < len; i++) {
                     if(i > len - 1) break
-                    list[i - start] = this[i]
                     list.length++
+                    list[i - start] = this[i]
                     delete this[i]
                     this.length--
                 }
@@ -174,8 +173,8 @@
                     if (args.length === deleteCount) {
                         for (let j = 0; j < deleteCount; j++) {
                             if (start > len - 1) break
-                            list[j] = cloneList[j + start]
                             list.length++
+                            list[j] = cloneList[j + start]
                             this[j + start] = args[j]
                         }
                     } else if (args.length > deleteCount) {
@@ -186,8 +185,8 @@
                         }
                         for (let k = start,l = 0; k < start + args.length; k++,l++) {
                             if (l < deleteCount) {
-                                list[k - start] = this[span + start]
                                 list.length++
+                                list[k - start] = this[span + k]
                             }
                             this[k] = args[k - start]
                             
@@ -195,9 +194,8 @@
                     } else if (args.length < deleteCount) {
                         for (let j = 0; j < deleteCount; j++) {
                             if (start > len - 1) break
+                            list.length++                            
                             list[j] = cloneList[j + start]
-                            list.length++
-            
                             for(let k = 0; k < this.length; k++) { 
                                 if (k + start > this.length - 1) break
                                 this[k + start] = this[ k + start + 1]                    
@@ -210,9 +208,8 @@
                     
                     for (let j = 0; j < deleteCount; j++) {
                         if (start > len - 1) break
+                        list.length++                        
                         list[j] = cloneList[j + start]
-                        list.length++
-        
                         for(let k = 0; k < this.length; k++) { 
                             if (k + start > this.length - 1) break
                             this[k + start] = this[ k + start + 1]                    
