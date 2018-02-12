@@ -230,8 +230,55 @@ describe('List', function () {
       })
     })
 
+    describe('#sort', function () {
+      it('数组列表排序', function () {
+        let list = new List('z', 'a', 'c', 'd', 'g')
+        list.sort()
+        assert.deepEqual(list, {
+          0: 'a',
+          1: 'c',
+          2: 'd',
+          3: 'g',
+          4: 'z'
+        })
+
+        let list1 = new List(2, 1, 3)
+        list1.sort()
+        assert.deepEqual(list1, {
+          0: 1,
+          1: 2,
+          2: 3
+        })
+
+        let list2 = new List(2, 1, 10, 3)
+        list2.sort()
+        assert.deepEqual(list2, {
+          0: 1,
+          1: 10,
+          2: 2,
+          3: 3
+        })
+
+        list2.sort(function (a, b) { return a - b})
+        assert.deepEqual(list2, {
+          0: 1,
+          1: 2,
+          2: 3,
+          3: 10
+        })
+
+        list2.sort(function (a, b) { return b - a})
+        assert.deepEqual(list2, {
+          0: 10,
+          1: 3,
+          2: 2,
+          3: 1
+        })
+      })
+    })
+
     describe('#forEach', function () {
-      it('遍历数组', function () {
+      it('遍历数组，执行指定的迭代函数，返回值undefined', function () {
         let list = new List(1, 2, 3)
         list.forEach(function (value, key, array) {
           assert.equal(value, list[key])
@@ -240,5 +287,57 @@ describe('List', function () {
         })
       })
     })
+
+    describe('#some', function () {
+      it('只要有一个满足特定条件，返回true，否则返回false', function () {
+        let list = new List(1, 2, 3)
+        assert.equal(list.some(item => item % 2 === 0), true)
+        assert.equal(list.some(item => item > 10), false)        
+      })
+    })
+
+    describe('#every', function () {
+      it('列表中所有项满足特定条件，返回true，否则返回false', function () {
+        let list = new List(1, 2, 3)
+        assert.equal(list.every(item => item > 0), true)
+        assert.equal(list.every(item => item > 1), false)
+      })
+    })
+
+    describe('#map', function () {
+      it('对列表中的每项运行特定函数，返回由每次函数调用的结果组成的列表', function () {
+        let list = new List(1, 2, 3)
+        assert.deepEqual(list.map(item => item * 3), {
+          0: 3,
+          1: 6,
+          2: 9
+        })
+      })
+    })
+
+    describe('#filter', function () {
+      it('由满足条件的元素返回组成的列表', function () {
+        let list = new List(1, 2, 3)
+        assert.deepEqual(list.filter(item => item % 2 === 0), {
+          0: 2
+        })
+      })
+    })
+
+    describe('#reduce', function () {
+      it('归并，求和', function () {
+        let list = new List(1, 2, 3)
+        assert.equal(list.reduce((result, item) => result + item), 6)
+        assert.equal(list.reduce((result, item) => result + item, 10), 16)        
+      })
+    })
+
+    describe('#reduceRight', function () {
+      it('归并，组合字符串', function () {
+        let list = new List('c', 'b', 'a')
+        assert.equal(list.reduceRight((result, item) => result + item), 'abc')
+      })
+    })
+
   })
 })
