@@ -243,7 +243,7 @@
         }
 
         /**
-         * 数组转换成字符串
+         * @method 数组转换成字符串
          * @param {String} separator - 元素之间的分隔符
          * @return {String} - 返回以separator分隔元素的字符串
          */
@@ -254,6 +254,58 @@
             }
             str += this[this.length - 1]
             return (this[this.length - 1]) ? str : ''
+        }
+
+        /**
+         * @method 数组排序 - 默认按照ascii排序，可通过比较函数确定排序规则，改变原数组列表
+         * @param {Function} compare - 比较函数，当执行函数返回值大于0，升序排列，否则降序排列
+         * @return {List} 返回原列表数组
+         */
+        sort (compare) {
+            if (compare === undefined) {
+                /**
+                 * 冒泡排序
+                 */
+                let temp
+                for (let i = 0; i < this.length; i++) {
+                    for (let j = i + 1; j < this.length; j++) {
+                        if (this[i] + '' > this[j] + '') {//将数字转换成字符串比较
+                            temp = this[j]
+                            this[j] = this[i]
+                            this[i] = temp
+                        }
+                    }
+                }
+            } else if (typeof compare == 'function') {
+                /** compare 为比较函数 */
+                let temp
+                for (let i = 0; i < this.length; i++) {
+                    for (let j = i + 1; j < this.length; j++) {
+                        if (compare(this[i], this[j]) > 0) {
+                            temp = this[j]
+                            this[j] = this[i]
+                            this[i] = temp
+                        }
+                    }
+                }
+                
+            } else {
+                throw new TypeError('The comparison function must be either a function or undefined')
+            }
+            return this
+        }
+
+        /**
+         * @method 反转数组
+         */
+        reverse () {
+            let temp
+            for (let i = 0; i < Math.floor(this.length / 2) ; i++) {
+                temp = this[i]
+                this[i] = this[this.length - i - 1]
+                this[this.length - i - 1] = temp
+            }
+            return this
         }
 
         /**
