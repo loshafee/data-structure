@@ -11,11 +11,11 @@
         /**
          * @method 压栈
          * @param {Mixed} element - 压栈的元素
-         * @return 返回压栈元素
+         * @return 返回栈长度
          */
         push (element) {
             this.dataStore[this.top++] = element
-            return element
+            return this.top
         }
 
         /**

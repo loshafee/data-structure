@@ -18,7 +18,7 @@ Data structure with Javascript
 
     $ mocha
 
-## List
+## List 列表
 模拟数组，与Array操作一致，List是使用Object对象模拟的，List的下标访问实质是对对象Object的数字属性访问
 
 * `Class` List
@@ -94,7 +94,7 @@ Data structure with Javascript
 
     * `values()` 返回由每项元素值组成的迭代器，通过 `next()`获取值及状态
 
-## LinkList
+## LinkList 链表
 模拟链表
 
 * `Class` LinkList 
@@ -136,6 +136,33 @@ Data structure with Javascript
     * `moveTo(position)` 指针移动到 `position` 位置
 
     * `getElement()` 返回指针所在的链表元素
+
+
+## Stack 栈
+模拟栈
+
+* `Class` Stack
+
+        /** 创建空栈 */
+        let stack = new Stack()
+
+* `Property` 
+    
+    * `top` 指针，指向栈顶
+    * `dataStore` 存储元素的数组
+
+* `method`
+
+    * `push(element)` 压栈，`top` 指针上移，返回栈长度。
+
+    * `pop()` 出栈，`top` 指针下移，返回栈顶元素。
+
+    * `peek()` 返回栈顶元素
+
+    * `length()` 返回栈长度
+
+    * `clear()` 清空栈
+
 
 ## License
 MIT
