@@ -94,5 +94,48 @@ Data structure with Javascript
 
     * `values()` 返回由每项元素值组成的迭代器，通过 `next()`获取值及状态
 
+## LinkList
+模拟链表
+
+* `Class` LinkList 
+        /** 创建空链表 */
+        let linkList = new LinkList()
+
+* `Property`
+    * `listSize` 链表长度
+    * `pos` 指针位置
+    * `dataStore` 存储数据列表数组
+
+* `method`
+    * `append()` 添加元素到链表末尾
+
+    * `find(element)` 查找元素，找到返回 `element` 返回所在数组下标，否则返回 `-1`
+
+    * `remove(element)` 移除链表元素，成功移除 `element` 返回 `true`，否则返回 `false`
+
+    * `length()` 返回链表长度
+
+    * `toString()` 链表的字符串表示
+
+    * `insert(element, after)` 在元素 `after` 后插入元素 `element`，成功插入返回 `true`，否则返回 `false`
+
+    * `clear()` 清空链表
+
+    * `contains(element)` 在链表中查找元素 `element`，找到返回 `true`，否则 `false`
+
+    * `front()` 指针移动到链表开头
+
+    * `end()` 指针移动到链表末尾
+
+    * `prev()` 指针前移一个位置
+
+    * `next()` 指针后移一个位置
+
+    * `currPos()` 返回当前指针位置
+
+    * `moveTo(position)` 指针移动到 `position` 位置
+
+    * `getElement()` 返回指针所在的链表元素
+
 ## License
 MIT
