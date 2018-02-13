@@ -149,6 +149,12 @@
          * @return {Number} - 当前指针位置
          */
         moveTo (position) {
+            if (position < 0) {
+                throw new Error('position must be bigger than -1')
+            }
+            if (position > this.listSize - 1) {
+                throw new Error('position no more than the LinkList length')                
+            }
             this.pos = position
             return this.pos        
         }
