@@ -135,6 +135,7 @@
          */
         slice (start = 0, end = this.length) {
             let list = new List()
+            if (start < 0) start = this.length + start
             if (end < 0) end = this.length + end
             for (let i = start; i < end; i++) {
                 if (i > this.length - 1) break
@@ -418,6 +419,128 @@
                 accumulator = callback(accumulator, this[i], i, this)
             }
             return accumulator
+        }
+
+        /**
+         * @method 复制元素至列表，会改变原列表
+         * @param {Number} target - 替换元素的位置
+         * @param {Number} start - 开始复制元素的位置
+         * @param {Number} end - 结束复制元素的位置
+         * @return {List} - 返回修改后的列表
+         */
+        copyWithin(target, start = 0, end = this.length) {
+            let copyList = this.slice(start, end),
+                len,
+                loopLen
+
+            if (end < start) { return this }
+            if (target < 0) target = this.length + target
+            if (target > this.length - 1) target = this.length - 1
+            if (end < 0) end = this.length + len
+            if (end > this.length - 1) end = this.length - 1
+            len = this.length - target
+            loopLen = copyList.length
+            for (let i = 0; i < len; i++) {
+                console.log(`i = ${i}`)
+
+                this[i + target] = copyList[i % loopLen]
+            } 
+            return this
+        }
+
+        /**
+         * @method 使用值替换从start 到end 下标的元素
+         * @param {Number} value - 填充的元素
+         * @param {Number} start - 开始的下标
+         * @param {Number} end - 结束的下标
+         * @return - 返回替换后的列表
+         */
+        fill (value, start = 0, end = this.length) {
+            if (start < 0) start = this.length + start
+            if (end < 0) end = this.length + end
+            for (let i = start; i < end; i++) {
+                this[i] = value
+            }
+            return this
+        }
+
+        /**
+         * @method 查找列表元素，找到返回该元素，否则undefined
+         * @param {Function} callback - 回调函数，传入列表元素
+         * @return 找到返回该元素，否则undefined
+         */
+        find (callback) {
+            if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
+            for (let i = 0; i < this.length; i++) {
+                if (callback(this[i])) {
+                    return this[i]
+                }
+            }
+        }
+
+        /**
+         * @method 查找列表元素，找到返回该元素下标，否则-1
+         * @param {Function} callback - 回调函数，传入列表元素
+         * @return {Boolean} - 找到返回该元素，否则-1
+         */
+        findIndex (callback) {
+            if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
+            for (let i = 0; i < this.length; i++) {
+                if (callback(this[i])) {
+                    return i
+                }
+            }
+            return -1
+        }
+
+        /**
+         * @method 查找元素
+         * @param {Mixed} searchElement - 需要在列表中搜索的元素
+         * @param {Number} fromIndex - 开始搜索的下标
+         * @return {Boolean} - 找到返回true,否则false
+         */
+        includes (searchElement, fromIndex = 0) {
+            for (let i = fromIndex; i < this.length; i++) {
+                if (this[i] === searchElement) {
+                    return true
+                }
+            }
+            return false
+        }
+
+        /**
+         * @method keys - 返回由每项元素下标组成的迭代器
+         * @return {Iterator} - 迭代器
+         */
+        keys () {
+            let index = -1
+            return {
+                next: () => {
+                    return {
+                        value: ((index) => {
+                            if (index in this) return index
+                            index = this.length
+                        })(++index),
+                        done: (index > this.length - 1) ? true : false
+                    }
+                }
+            }
+        }
+
+        /**
+         * @method values - 返回由每项元素值组成的迭代器
+         * @return {Iterator} - 迭代器
+         */
+        values () {
+            let index = -1
+            return {
+                next: () => {
+                    return {
+                        value: this[++index],
+                        done: (index > this.length - 1) ? true : false
+                    }
+                }
+            }
         }
     }
 
