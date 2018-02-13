@@ -340,5 +340,99 @@ describe('List', function () {
       })
     })
 
+    describe('#copyWithin', function () {
+      it('复制列表元素', function () {
+        let list = new List(1, 2, 3)
+        list.copyWithin(1)
+        assert.deepEqual(list, {
+          0: 1,
+          1: 1,
+          2: 2
+        })
+
+        let list1 = new List(1, 2, 3, 4, 5)
+        list1.copyWithin(0, 1, 3)
+        assert.deepEqual(list1, {
+          0: 2,
+          1: 3,
+          2: 3,
+          3: 4,
+          4: 5
+        })
+
+        let list2 = new List(1, 2, 3, 4, 5)
+        list2.copyWithin(-2, -3)
+        assert.deepEqual(list2, {
+          0: 1,
+          1: 2,
+          2: 3,
+          3: 3,
+          4: 4
+        })
+      })
+    })
+
+    describe('#find', function () {
+      it('查找为偶数的元素', function () {
+        let list = new List(1, 2, 3)
+        assert.equal(list.find(function(ele) {
+          return ele % 2 === 0
+        }), 2)
+      })
+      it('查找大于2的元素', function () {
+        let list = new List(1, 2, 3)
+        assert.equal(list.find(function(ele) {
+          return ele > 2
+        }), 3)
+      })
+    })
+
+    describe('#findIndex', function () {
+      it('查找为偶数的元素的下标', function () {
+        let list = new List(1, 2, 3)
+        assert.equal(list.findIndex(function(ele) {
+          return ele % 2 === 0
+        }), 1)
+      })
+      it('查找大于2的元素的下标', function () {
+        let list = new List(1, 2, 3)
+        assert.equal(list.findIndex(function(ele) {
+          return ele > 2
+        }), 2)
+      })
+    })
+
+    describe('#includes', function () {
+      it('查找`a`元素', function () {
+        let list = new List('a', 'b', 'c')
+        assert.equal(list.includes('a'), true)
+      })
+      it('查找`x`元素', function () {
+        let list = new List('a', 'b', 'c')
+        assert.equal(list.includes('x'), false)
+      })
+    })
+
+    describe('#keys', function () {
+      it('返回迭代器，值分别为0,1,2,undefined', function () {
+        let list = new List('a', 'b', 'c')
+        let iterator = list.keys()
+        assert.equal(iterator.next().value, 0)
+        assert.equal(iterator.next().value, 1)
+        assert.equal(iterator.next().value, 2)  
+        assert.equal(iterator.next().value, undefined)        
+      })
+    })
+
+    describe('#values', function () {
+      it('返回迭代器，值分别为a, b, c,undefined', function () {
+        let list = new List('a', 'b', 'c')
+        let iterator = list.values()
+        assert.equal(iterator.next().value, 'a')
+        assert.equal(iterator.next().value, 'b')
+        assert.equal(iterator.next().value, 'c')  
+        assert.equal(iterator.next().value, undefined)        
+      })
+    })
   })
 })

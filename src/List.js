@@ -441,9 +441,9 @@
             len = this.length - target
             loopLen = copyList.length
             for (let i = 0; i < len; i++) {
-                console.log(`i = ${i}`)
-
-                this[i + target] = copyList[i % loopLen]
+                if (typeof copyList[i] !== 'undefined') {
+                    this[i + target] = copyList[i]
+                }
             } 
             return this
         }
