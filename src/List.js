@@ -1,9 +1,9 @@
 (function (root) {
   
   /**
-   * @module LinkList模拟链表
+   * @module List模拟链表
    */
-  class LinkList {
+  class List {
     constructor() {
       // 链表长度
       this.listSize = 0
@@ -177,7 +177,7 @@
         throw new Error('position must be bigger than -1')
       }
       if (position > this.listSize - 1) {
-        throw new Error('position no more than the LinkList length')
+        throw new Error('position no more than the List length')
       }
       this.pos = position
 
@@ -196,11 +196,11 @@
   /** 模块化封装 */
   if (typeof define !== 'undefined' && define.amd) {
     define([], function () {
-      return LinkList
+      return List
     })
   } else if (typeof module !== 'undefined' && module.exports) {
-    module.exports = LinkList
+    module.exports = List
   } else {
-    root.LinkList = LinkList
+    root.List = List
   }
 }(this))

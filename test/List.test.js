@@ -1,10 +1,10 @@
 const assert = require('chai').assert
-const LinkList = require('../src/LinkList')
+const List = require('../src/List')
 
-describe('LinkList', function () {
+describe('List', function () {
   describe('#constructor', function () {
     it('新建链表', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       assert.equal(linkList.pos, 0)
       assert.equal(linkList.listSize, 0)
       assert.equal(linkList.dataStore.length, 0)
@@ -13,12 +13,12 @@ describe('LinkList', function () {
 
   describe('#append', function () {
     it('在末尾添加元素', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append(1)
       assert.equal(linkList.dataStore[linkList.listSize - 1], 1)
     })
     it('链表长度加1', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append(1)
       assert.equal(linkList.listSize, 1)
     })
@@ -26,33 +26,33 @@ describe('LinkList', function () {
 
   describe('#find', function () {
     it('查询 `a` 成功，返回数字下标', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append('a')
       assert.equal(linkList.find('a'), 0)
     })
 
     it('查询 `b` 失败，返回-1', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       assert.equal(linkList.find('b'), -1)
     })
   })
 
   describe('#remove', function () {
     it('删除链表元素 `a` 成功， 返回 true', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append('a')
       assert.equal(linkList.remove('a'), true)
     })
 
     it('删除链表元素 `b` 失败， 返回 false', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       assert.equal(linkList.remove('b'), false)
     })
   })
 
   describe('#length', function () {
     it('返回链表长度', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       assert.equal(linkList.length(), 0)
       linkList.append('a')
       assert.equal(linkList.length(), 1)
@@ -63,7 +63,7 @@ describe('LinkList', function () {
 
   describe('#toString', function () {
     it('链表的字符串表示', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       assert.equal(linkList.toString(), '')
       linkList.append('a')
       assert.equal(linkList.toString(), 'a')
@@ -73,7 +73,7 @@ describe('LinkList', function () {
   })
 
   describe('#insert', function () {
-    let linkList = new LinkList()
+    let linkList = new List()
     linkList.append('a')
     linkList.append('b')
     linkList.append('c')
@@ -91,7 +91,7 @@ describe('LinkList', function () {
 
   describe('#clear', function () {
     it('清空链表', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append('a')
       linkList.append('b')
       linkList.append('c')
@@ -102,7 +102,7 @@ describe('LinkList', function () {
   })
 
   describe('#contains', function () {
-    let linkList = new LinkList()
+    let linkList = new List()
     linkList.append('a')
     linkList.append('b')
     linkList.append('c')
@@ -116,7 +116,7 @@ describe('LinkList', function () {
 
   describe('#front', function () {
     it('指针pos 指向链表起始位置', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append('a')
       linkList.append('b')
       assert.equal(linkList.front(), 0)
@@ -125,7 +125,7 @@ describe('LinkList', function () {
 
   describe('#end', function () {
     it('指针 pos 指向链表末尾位置', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append('a')
       linkList.append('b')
       assert.equal(linkList.end(), linkList.listSize - 1)
@@ -134,7 +134,7 @@ describe('LinkList', function () {
 
   describe('#prev', function () {
     it('指针 pos 指向前一位置', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append('a')
       linkList.append('b')
       linkList.append('c')
@@ -147,7 +147,7 @@ describe('LinkList', function () {
 
   describe('#next', function () {
     it('指针 pos 指向后一位置', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append('a')
       linkList.append('b')
       linkList.append('c')
@@ -159,7 +159,7 @@ describe('LinkList', function () {
 
   describe('#currPos', function () {
     it('指针 pos 返回当前位置', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append('a')
       linkList.append('b')
       assert.equal(linkList.currPos(), 0)
@@ -172,7 +172,7 @@ describe('LinkList', function () {
 
   describe('#moveTo', function () {
     it('移动指针到某个位置', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append('a')
       linkList.append('b')
       linkList.append('c')
@@ -186,7 +186,7 @@ describe('LinkList', function () {
 
   describe('#getElement', function () {
     it('返回当前指针指向的元素', function () {
-      let linkList = new LinkList()
+      let linkList = new List()
       linkList.append('a')
       linkList.append('b')
       linkList.append('c')
