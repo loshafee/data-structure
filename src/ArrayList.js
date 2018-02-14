@@ -1,5 +1,5 @@
 /**
- * @module List  模块数组List模块
+ * @module ArrayList  模块数组Array的List模块
  */
 
 (function (root) {
@@ -7,7 +7,7 @@
   /**
    * @class List使用对象模拟数组类
    */
-  class List {
+  class ArrayList {
 
     /**
      * 构造函数，返回对象
@@ -159,7 +159,7 @@
      * @return {Array} 返回新的List
      */
     slice(start = 0, end = this.length) {
-      let list = new List()
+      let list = new ArrayList()
       if (start < 0) { 
         start = this.length + start 
       }
@@ -184,7 +184,7 @@
      * @return {Array} - 返回剪切删除元素组成的数组
      */
     splice(start, deleteCount, ...args) {
-      let list = new List(),
+      let list = new ArrayList(),
         len = this.length,
         cloneList = this.slice()
       if (start < 0) {
@@ -315,7 +315,7 @@
      * 数组排序 - 默认按照ascii排序，可通过比较函数确定排序规则，改变原数组列表
      * @method sort
      * @param {Function} compare - 比较函数，当执行函数返回值大于0，升序排列，否则降序排列
-     * @return {List} 返回原列表数组
+     * @return {ArrayList} 返回原列表数组
      */
     sort(compare) {
       if (compare === undefined) {
@@ -354,7 +354,7 @@
 
     /**
      * @method 反转数组
-     * @return {List} 返回列表表示
+     * @return {ArrayList} 返回列表表示
      */
     reverse() {
       let temp = undefined
@@ -445,13 +445,13 @@
      * @method map
      * @param {Function} callback - 迭代函数
      * @param {Global} thisArg - 迭代函数this作用域
-     * @return {List} 计算后的list
+     * @return {ArrayList} 计算后的list
      */
     map(callback, thisArg) {
       if (typeof callback !== 'function') {
         throw new TypeError(`${callback} is not a function`)
       }
-      let list = new List()
+      let list = new ArrayList()
       for (let i = 0; i < this.length; i++) {
         list[i] = Reflect.apply(callback, thisArg
           ? thisArg
@@ -470,13 +470,13 @@
      * @method filter
      * @param {Function} callback - 迭代函数
      * @param {Global} thisArg - 迭代函数this作用域
-     * @return {List} 筛选后的list
+     * @return {ArrayList} 筛选后的list
      */
     filter(callback, thisArg) {
       if (typeof callback !== 'function') {
         throw new TypeError(`${callback} is not a function`)
       }
-      let list = new List()
+      let list = new ArrayList()
       for (let i = 0; i < this.length; i++) {
         if (Reflect.apply(callback, thisArg
           ? thisArg
@@ -546,7 +546,7 @@
      * @param {Number} target - 替换元素的位置
      * @param {Number} start - 开始复制元素的位置
      * @param {Number} end - 结束复制元素的位置
-     * @return {List} - 返回修改后的列表
+     * @return {ArrayList} - 返回修改后的列表
      */
     copyWithin(target, start = 0, end = this.length) {
       let copyList = this.slice(start, end),
@@ -581,7 +581,7 @@
      * @param {Number} value - 填充的元素
      * @param {Number} start - 开始的下标
      * @param {Number} end - 结束的下标
-     * @return {List} - 返回替换后的列表
+     * @return {ArrayList} - 返回替换后的列表
      */
     fill(value, start = 0, end = this.length) {
       if (start < 0) {
@@ -692,7 +692,7 @@
             done: index >= this.length - 1,
             value: this[++index]
           }
-          
+
           return iterator
         }
       }
@@ -702,11 +702,11 @@
   /** 模块化封装 */
   if (typeof define !== 'undefined' && define.amd) {
     define([], function () {
-      return List
+      return ArrayList
     })
   } else if (typeof module !== 'undefined' && module.exports) {
-    module.exports = List
+    module.exports = ArrayList
   } else {
-    root.List = List
+    root.ArrayList = ArrayList
   }
 }(this))
