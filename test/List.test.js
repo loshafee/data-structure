@@ -108,7 +108,7 @@ describe('List', function () {
     describe('#slice', function () {
       it('复制数组，返回一个新数组列表，不改变原数组', function () {
         let list = new List,
-        cloneList = list.slice()
+          cloneList = list.slice()
         assert.equal(list === cloneList, false)
         assert.equal(typeof cloneList === 'object', true)
         assert.equal(list.length, 0)
@@ -138,7 +138,7 @@ describe('List', function () {
     describe('#splice', function () {
       it('删除数组列表元素， 返回删除元素组成的数组，原数组剩下没有被删除的元素', function () {
         let list = new List(1, 2, 3, 4),
-        deleteList = list.splice(3)
+          deleteList = list.splice(3)
         assert.equal(deleteList.length, 1)
         assert.equal(deleteList[0], 4)
         assert.equal(list.length, 3)
@@ -146,7 +146,7 @@ describe('List', function () {
       })
       it('删除指定个数元素的数组, 返回删除元素组成的数组，原数组剩下没有被删除的元素', function () {
         let list = new List(1, 2, 3, 4),
-        deleteList = list.splice(1, 2)
+          deleteList = list.splice(1, 2)
         assert.equal(deleteList.length, 2)
         assert.equal(deleteList[0], 2)
         assert.equal(deleteList[1], 3)        
@@ -156,7 +156,7 @@ describe('List', function () {
         assert.equal(list[1], 4)
 
         let list1 = new List(1, 2, 3, 4),
-        deleteList1 = list1.splice(-1, 2)
+          deleteList1 = list1.splice(-1, 2)
         assert.equal(list1.length, 3)
         assert.equal(deleteList1.length, 1)
         assert.equal(deleteList1[0], 4)
@@ -164,14 +164,14 @@ describe('List', function () {
 
       it('替换数组中的元素', function () {
         let list = new List(1, 2, 3, 4),
-        replaceList = list.splice(1, 1, 'a')
+          replaceList = list.splice(1, 1, 'a')
         assert.equal(list.length, 4)
         assert.equal(list[1], 'a')
         assert.equal(replaceList[0], 2)
         assert.equal(replaceList.length, 1)
 
         let list1 = new List(1, 2, 3, 4),
-        replaceList1 = list1.splice(-2, 2, 'a', 'b')
+          replaceList1 = list1.splice(-2, 2, 'a', 'b')
         assert.equal(list1.length, 4)
         assert.equal(list1[2], 'a')
         assert.equal(list1[3], 'b')        
@@ -179,22 +179,22 @@ describe('List', function () {
       })
 
       it('添加元素到数组', function () {
-        let list = new List(1, 2, 3),
-        addList = list.splice(1, 0, 'a')
+        let list = new List(1, 2, 3)
+        list.splice(1, 0, 'a')
         assert.equal(list.length, 4)
         assert.equal(list[1], 'a')
         assert.equal(list[2], 2)
         assert.equal(list[3], 3)
 
-        let list1 = new List(1, 2, 3),
-        addList1 = list1.splice(4, 0, 'a')
+        let list1 = new List(1, 2, 3)
+        list1.splice(4, 0, 'a')
         assert.equal(list1.length, 4)
         assert.equal(list1[3], 'a')
       })
 
       it('替换数组中的元素，并添加元素到数组列表', function () {
         let list = new List(1, 2, 3),
-        addList = list.splice(1, 2, 'a', 'b', 'c')
+          addList = list.splice(1, 2, 'a', 'b', 'c')
         assert.equal(list.length, 4)
         assert.equal(list[list.length-1], 'c')
         assert.equal(list[list.length-2], 'b')     
@@ -207,8 +207,8 @@ describe('List', function () {
     describe('#concat', function () {
       it('合并数组', function () {
         let list1 = new List(1, 2, 3),
-            list2 = new List('a', 'b'),
-            concatList = list1.concat(list2) 
+          list2 = new List('a', 'b'),
+          concatList = list1.concat(list2) 
         assert.equal(concatList.length, list1.length + list2.length)
         assert.equal(concatList[concatList.length - 1], list2[list2.length - 1])
         
