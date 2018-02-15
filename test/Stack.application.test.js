@@ -22,6 +22,14 @@ describe('Stack.Application 栈应用', function () {
       let converted3 = Stack.mulBase(16, 8)
       assert.equal(converted3, '20')
     })
+
+    it('数字转换成十六进制', function () {
+      let converted1 = Stack.mulBase(12, 16)
+      assert.equal(converted1, 'C')
+
+      let converted2 = Stack.mulBase(18, 16)
+      assert.equal(converted2, '12')
+    })
   })
 
   describe('#isPalindrome 回文数判断', function () {

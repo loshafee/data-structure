@@ -8,8 +8,9 @@ const Stack = require('./Stack')
  */
 let mulBase = function (num, base) {
   let s = new Stack()
+  let baseArr = ['0123456789ABCDEF'].join('')
   do {
-    s.push(num % base)
+    s.push(baseArr[num % base])
     num = Math.floor(num / base)    
   } while (num > 0)
   let converted = ''
