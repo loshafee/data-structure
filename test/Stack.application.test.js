@@ -23,4 +23,18 @@ describe('Stack.Application 栈应用', function () {
       assert.equal(converted3, '20')
     })
   })
+
+  describe('#isPalindrome 回文数判断', function () {
+    it('`abccbc`是回文数', function () {
+      assert.equal(Stack.isPalindrome('abccba'), true)
+    })
+
+    it('`abcabc不是回文数`', function () {
+      assert.equal(Stack.isPalindrome('abcabc'), false)
+    })
+
+    it('`abcdcba`是回文数', function () {
+      assert.equal(Stack.isPalindrome('abcdcba'), true)
+    })
+  })
 })
