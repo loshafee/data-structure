@@ -18,10 +18,10 @@ class Queue {
 
   /**
    * 出队
-   * @return {Undefined} undefined
+   * @return {Mixed} Mixed
    */
   dequeue () {
-    this.dataStore.shift()
+    return this.dataStore.shift()
   }
 
   /**
