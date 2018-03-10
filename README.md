@@ -163,6 +163,24 @@ Data structure with Javascript
 
     * `clear()` 清空栈
 
+## Queue 队列
+* `Class` Queue
+
+        /** 创建空队列 */
+        let queue = new Queue()
+
+* `Property`
+
+    * `dataStore` 存储队列元素的数组
+
+* `method`
+
+    * `enqueue(element)` 入队
+    * `dequeue` 出队
+    * `front` 获取队头元素
+    * `back` 获取队尾元素
+    * `toString` 返回字符串表示
+    * `empty` 判断队列是否为空
 
 ## License
 MIT
