@@ -137,6 +137,22 @@ Data structure with Javascript
 
     * `getElement()` 返回指针所在的链表元素
 
+栈应用
+
+    let stackApplication = require('./Stack.application')
+
+* 数制转换
+
+        stackApplication.mulBase(3, 2) // return 11
+
+* 回文数
+
+        stackApplication.isPalindrome('abcdcba') // return true
+        stackApplication.isPalindrome('abcdabcd') // return false
+
+
+
+
 
 ## Stack 栈
 模拟栈
