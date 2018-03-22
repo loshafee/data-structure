@@ -2,7 +2,7 @@ const assert = chai.assert
 
 describe('List', function () {
   describe('#constructor', function () {
-    it('新建链表', function () {
+    it('新建列表', function () {
       let linkList = new List()
       assert.equal(linkList.pos, 0)
       assert.equal(linkList.listSize, 0)
@@ -16,7 +16,7 @@ describe('List', function () {
       linkList.append(1)
       assert.equal(linkList.dataStore[linkList.listSize - 1], 1)
     })
-    it('链表长度加1', function () {
+    it('列表长度加1', function () {
       let linkList = new List()
       linkList.append(1)
       assert.equal(linkList.listSize, 1)
@@ -37,20 +37,20 @@ describe('List', function () {
   })
 
   describe('#remove', function () {
-    it('删除链表元素 `a` 成功， 返回 true', function () {
+    it('删除列表元素 `a` 成功， 返回 true', function () {
       let linkList = new List()
       linkList.append('a')
       assert.equal(linkList.remove('a'), true)
     })
 
-    it('删除链表元素 `b` 失败， 返回 false', function () {
+    it('删除列表元素 `b` 失败， 返回 false', function () {
       let linkList = new List()
       assert.equal(linkList.remove('b'), false)
     })
   })
 
   describe('#length', function () {
-    it('返回链表长度', function () {
+    it('返回列表长度', function () {
       let linkList = new List()
       assert.equal(linkList.length(), 0)
       linkList.append('a')
@@ -61,7 +61,7 @@ describe('List', function () {
   })
 
   describe('#toString', function () {
-    it('链表的字符串表示', function () {
+    it('列表的字符串表示', function () {
       let linkList = new List()
       assert.equal(linkList.toString(), '')
       linkList.append('a')
@@ -89,7 +89,7 @@ describe('List', function () {
   })
 
   describe('#clear', function () {
-    it('清空链表', function () {
+    it('清空列表', function () {
       let linkList = new List()
       linkList.append('a')
       linkList.append('b')
@@ -114,7 +114,7 @@ describe('List', function () {
   })
 
   describe('#front', function () {
-    it('指针pos 指向链表起始位置', function () {
+    it('指针pos 指向列表起始位置', function () {
       let linkList = new List()
       linkList.append('a')
       linkList.append('b')
@@ -123,7 +123,7 @@ describe('List', function () {
   })
 
   describe('#end', function () {
-    it('指针 pos 指向链表末尾位置', function () {
+    it('指针 pos 指向列表末尾位置', function () {
       let linkList = new List()
       linkList.append('a')
       linkList.append('b')

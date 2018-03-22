@@ -18,23 +18,23 @@ Data structure with Javascript
 
     $ mocha
 
-## List 列表
-模拟数组，与Array操作一致，List是使用Object对象模拟的，List的下标访问实质是对对象Object的数字属性访问
+## ArrayList 列表
+模拟数组，与Array操作一致，ArrayList是使用Object对象模拟的，ArrayList的下标访问实质是对对象Object的数字属性访问
 
-* `Class` List
+* `Class` ArrayList
 
         /** 创建空数组列表*/
-        let list = new List()
+        let list = new ArrayList()
 
         /** 创建长度为5的数组列表*/
-        let list = new List(5)
+        let list = new ArrayList(5)
 
         /** 创建长度为1，元素为'5'的数组列表*/
         /** 注意：此处的'5'为字符串，上面例子中的5为数字*/
-        let list = new List('5')
+        let list = new ArrayList('5')
 * `Property` length 数组列表实例的长度，可读可写
 
-        let list = new List(1, 2, 3)
+        let list = new ArrayList(1, 2, 3)
         list.length // return 3
         list.length = 1 // list = {0: 1}
 
@@ -94,38 +94,38 @@ Data structure with Javascript
 
     * `values()` 返回由每项元素值组成的迭代器，通过 `next()`获取值及状态
 
-## LinkList 链表
-模拟链表
+## List 列表
+模拟列表
 
-* `Class` LinkList 
-        /** 创建空链表 */
-        let linkList = new LinkList()
+* `Class` List 
+        /** 创建空列表 */
+        let linkList = new List()
 
 * `Property`
-    * `listSize` 链表长度
+    * `listSize` 列表长度
     * `pos` 指针位置
     * `dataStore` 存储数据列表数组
 
 * `method`
-    * `append()` 添加元素到链表末尾
+    * `append()` 添加元素到列表末尾
 
     * `find(element)` 查找元素，找到返回 `element` 返回所在数组下标，否则返回 `-1`
 
-    * `remove(element)` 移除链表元素，成功移除 `element` 返回 `true`，否则返回 `false`
+    * `remove(element)` 移除列表元素，成功移除 `element` 返回 `true`，否则返回 `false`
 
-    * `length()` 返回链表长度
+    * `length()` 返回列表长度
 
-    * `toString()` 链表的字符串表示
+    * `toString()` 列表的字符串表示
 
     * `insert(element, after)` 在元素 `after` 后插入元素 `element`，成功插入返回 `true`，否则返回 `false`
 
-    * `clear()` 清空链表
+    * `clear()` 清空列表
 
-    * `contains(element)` 在链表中查找元素 `element`，找到返回 `true`，否则 `false`
+    * `contains(element)` 在列表中查找元素 `element`，找到返回 `true`，否则 `false`
 
-    * `front()` 指针移动到链表开头
+    * `front()` 指针移动到列表开头
 
-    * `end()` 指针移动到链表末尾
+    * `end()` 指针移动到列表末尾
 
     * `prev()` 指针前移一个位置
 
@@ -135,7 +135,7 @@ Data structure with Javascript
 
     * `moveTo(position)` 指针移动到 `position` 位置
 
-    * `getElement()` 返回指针所在的链表元素
+    * `getElement()` 返回指针所在的列表元素
 
 栈应用
 
@@ -149,10 +149,6 @@ Data structure with Javascript
 
         stackApplication.isPalindrome('abcdcba') // return true
         stackApplication.isPalindrome('abcdabcd') // return false
-
-
-
-
 
 ## Stack 栈
 模拟栈

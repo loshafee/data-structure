@@ -1,11 +1,11 @@
 (function (root) {
   
   /**
-   * @module List模拟链表
+   * @module List模拟列表
    */
   class List {
     constructor() {
-      // 链表长度
+      // 列表长度
       this.listSize = 0
       // 指针位置
       this.pos = 0  
@@ -58,7 +58,7 @@
 
     /**
      * @method 获取长度
-     * @return {Number} - 返回链表的长度
+     * @return {Number} - 返回列表的长度
      */
     length() {
       return this.listSize
@@ -66,7 +66,7 @@
 
     /**
      * @method 获取字符串形式
-     * @return {Array} - 链表的字符串表示
+     * @return {Array} - 列表的字符串表示
      */
     toString() {
       return this.dataStore
@@ -101,7 +101,7 @@
     }
 
     /**
-     * @method 判断链表是否包括某元素
+     * @method 判断列表是否包括某元素
      * @param {Mixed} element - 查询的元素
      * @return {Boolean} - 找到返回true，否则false
      */
@@ -186,7 +186,7 @@
 
     /**
      * @method 获取当前指针指向的元素
-     * @return {Mixed} - 链表元素
+     * @return {Mixed} - 列表元素
      */
     getElement() {
       return this.dataStore[this.pos]
