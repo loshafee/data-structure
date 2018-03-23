@@ -27,15 +27,41 @@ let insert = function (newElement, item) {
   current.next = newNode
 }
 
-let remove = function () {}
-let display = function () {}
+/**
+ * 遍历节点
+ * @return {Undefined} undefined
+ */
+let display = function () {
+  let currNode = this.head
+  while (!(currNode.next === null)) {
+    print(currNode.next.element)
+    currNode = currNode.next
+  }
+}
+
+let findPrevious = function (item) {
+  let currNode = this.head
+  while (!(currNode.next === null) && (currNode.next.element !== item)) {
+    currNode = currNode.next
+  }
+
+  return currNode
+}
+
+let remove = function (item) {
+  let prevNode = this.findPrevious(item)
+  if (!(prevNode.next === null)) {
+    prevNode.next = prevNode.next.next
+  }
+}
 
 let LList = function () {
   this.head = new Node('head')
   this.find = find
   this.insert = insert
-  this.remove = remove
   this.display = display
+  this.findPrevious = findPrevious
+  this.remove = remove
 }
 
 module.exports = LList
