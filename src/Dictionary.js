@@ -12,11 +12,26 @@ class Dictionary {
   }
 
   remove (key) {
-    Reflect.deleteProperty(this, key)
+    Reflect.deleteProperty(this.datastore, key)
   }
 
   showAll () {
-    let datakeys = Reflect.apply([].slice, null, Object.keys(this.datastore))
-    
+    return this.datastore
+  }
+
+  count () {
+    return Object.keys(this.datastore).length
+  }
+
+  clear () {
+    Object.keys(this.datastore).forEach(function (key) {
+      this.remove(key)
+    }, this)
+  }
+
+  sort () {
+    this.datastore.sort()
   }
 }
+
+module.exports = Dictionary
