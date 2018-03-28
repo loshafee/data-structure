@@ -6,7 +6,7 @@ class HashTable {
   simpleHash (data) {
     let total = 0
     for (let i = 0; i < data.length; ++i) {
-      total += data.chatCodeAt(i)
+      total += data.charCodeAt(i)
     }
 
     return total % this.table.length
@@ -15,7 +15,7 @@ class HashTable {
   showDistro () {
     for (let i = 0; i < this.table.length; ++i) {
       if (this.table[i] !== undefined) {
-        true
+        console.log(`${i} : ${this.table[i]}`)
       }
     }
   }
