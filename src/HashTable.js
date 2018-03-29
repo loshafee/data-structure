@@ -12,6 +12,20 @@ class HashTable {
     return total % this.table.length
   }
 
+  betterHash (string) {
+    const H = 37 
+    let total = 0
+    for (let i = 0; i < string.length; ++i) {
+      total += (H * total) + string.charCodeAt(i)
+    }
+    total %= this.table.length
+    if (total < 0) {
+      total += this.table.length - 1
+    }
+
+    return parseInt(total, 10)
+  }
+
   showDistro () {
     for (let i = 0; i < this.table.length; ++i) {
       if (this.table[i] !== undefined) {
@@ -21,7 +35,8 @@ class HashTable {
   }
 
   put (data) {
-    let pos = this.simpleHash(data)
+    // Let pos = this.simpleHash(data)
+    let pos = this.betterHash(data)
     this.table[pos] = data
   }
 }
