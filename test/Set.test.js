@@ -32,6 +32,43 @@ describe('#Set', function () {
       assert.equal(false, set.remove('Tom'))
       assert.equal(set.dataStore.length, 1)      
     })
+
+    it('#size', function () {
+      let set = new Set()
+      set.add('David')
+      set.add('Tom')
+      assert.equal(2, set.size())
+    })
+
+    it('#show', function () {
+      let set = new Set()
+      set.add('Jack')
+      assert.deepEqual(['Jack'], set.show())
+    })
+
+    it('#contains', function () {
+      let set = new Set()
+      set.add('Jack')
+      assert.equal(true, set.contains('Jack'))
+      assert.equal(false, set.contains('Tom'))
+    })
+
+    it('#union', function () {
+      let set = new Set()
+      set.add('A')
+      set.add('B')
+
+      let tSet = new Set()
+      tSet.add('A')
+      tSet.add('C')
+
+      assert.equal(set.union(tSet).size(), 3)
+      assert.deepEqual([
+        'A',
+        'B',
+        'C'
+      ], set.union(tSet).show())
+    })
   })
 
 
