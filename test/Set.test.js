@@ -69,6 +69,56 @@ describe('#Set', function () {
         'C'
       ], set.union(tSet).show())
     })
+
+    it('#intersect', function () {
+      let set = new Set()
+      set.add('A')
+      set.add('B')
+
+      let tSet = new Set()
+      tSet.add('A')
+
+      assert.deepEqual(set.intersect(tSet).show(), ['A'])
+
+      tSet.add('C')
+      assert.deepEqual(set.intersect(tSet).show(), ['A'])
+
+      tSet.remove('A')
+      assert.deepEqual(set.intersect(tSet).show(), [])      
+    })
+
+    it('#subset', function () {
+      let set = new Set()
+      set.add('A')
+
+      let tSet = new Set()
+      
+      assert.equal(false, set.subset(tSet))
+      tSet.add('A')
+      assert.equal(true, set.subset(tSet))
+
+      tSet.add('B')
+      assert.equal(true, set.subset(tSet))      
+      
+    })
+
+    it('#difference', function () {
+      let set = new Set()
+      set.add('A')
+      set.add('B')
+
+      let tSet = new Set()
+      
+      assert.equal(set.difference(tSet).size(), 2)
+      assert.equal(set.difference(tSet).dataStore[0], 'A')
+      assert.equal(set.difference(tSet).dataStore[1], 'B')      
+
+      tSet.add('A')
+      tSet.add('C')
+
+      assert.equal(set.difference(tSet).size(), 1)
+      assert.equal(set.difference(tSet).dataStore[0], 'B')      
+    })
   })
 
 

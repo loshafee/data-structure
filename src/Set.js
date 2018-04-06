@@ -51,7 +51,7 @@ class Set {
     let tempSet = new Set()
     for (let i = 0; i < this.dataStore.length; ++i) {
       if (set.contains(this.dataStore[i])) {
-        tempSet.push(this.dataStore[i])
+        tempSet.add(this.dataStore[i])
       }
     }
 
