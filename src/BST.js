@@ -76,6 +76,20 @@ class BST {
 
     return current.data
   }
+  find (data) {
+    let current = this.root
+    while (current !== null) {
+      if (current.data === data) {
+        return current
+      } else if (current.data < data) {
+        current = current.right
+      } else if (current.data > data) {
+        current = current.left
+      }
+    }
+    
+    return null
+  }
 }
 
 module.exports = BST
