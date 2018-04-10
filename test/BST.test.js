@@ -43,5 +43,18 @@ describe('#BST', function () {
       bst.insert(22)
       assert.equal(99, bst.getMax())
     })
+
+    it('#find', function () {
+      let bst = new BST()
+      bst.insert(23)
+      bst.insert(45)
+      bst.insert(16)
+      bst.insert(37)
+      bst.insert(3)
+      bst.insert(99)
+      bst.insert(22)
+      assert.equal(bst.find(23).data, 23)
+      assert.equal(bst.find(11), null)
+    })
   })
 })
