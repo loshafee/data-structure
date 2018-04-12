@@ -90,6 +90,43 @@ class BST {
     
     return null
   }
+
+  remove (data) {
+    let root = removeNode(this.root, data)
+
+    return root
+  }
+}
+
+function removeNode (node, data) {
+  if (node === null) {
+    return null
+  }
+  if (data === node.data) {
+    if (node.left === null && node.right === null) {
+      return null
+    }
+    if (node.left === null) {
+      return node.right
+    }
+    if (node.right === null) {
+      return node.left
+    }
+
+    let tempNode = getSmallest(node.right)
+    node.data = tempNode.data
+    node.right = removeNode(node.right, tempNode.data)
+
+    return node
+  } else if (data < node.data) {
+    node.left = removeNode(node.left, data)
+
+    return node
+  } else {
+    node.right = removeNode(node.right, data)
+    
+    return node
+  }
 }
 
 module.exports = BST
