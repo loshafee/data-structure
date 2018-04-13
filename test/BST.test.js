@@ -92,5 +92,21 @@ describe('#BST', function () {
       bst.insert(22)
       bst.postOrder(bst.root)
     })
+
+    it('#remove', function () {
+      let bst = new BST()
+      bst.insert(23)
+      bst.insert(45)
+      let r = bst.remove(23)
+      console.log(r)
+      bst.inOrder(bst.root)
+    })
+
+    it('#update', function () {
+      let bst = new BST()
+      bst.insert(23)
+      bst.insert(45)
+      assert.equal(2, bst.update(23).count)
+    })
   })
 })
