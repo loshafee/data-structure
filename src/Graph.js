@@ -27,8 +27,17 @@ class Graph {
     }
   }
 
-  dfs () {
-    return ''
+  dfs (v) {
+    this.marked[v] = true
+    if (this.adj[v] !== undefined) {
+      console.log(`Visited vertex:  ${v}`)
+    }
+    for (let w in this.adj[v]) {
+      if (!this.marked[w]) {
+        this.dfs(w)
+      }
+    }
+
   }
 
   bfs () {
