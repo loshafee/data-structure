@@ -16,7 +16,7 @@ Data structure with Javascript
 ## Test测试脚本
 使用 `Mocha`测试脚本， `test` 目录下的为测试文件，运行 `mocha` 该目录下的测试文件跑起来
 
-    $ mocha
+    $ npm run test
 
 ## ArrayList 列表
 模拟数组，与Array操作一致，ArrayList是使用Object对象模拟的，ArrayList的下标访问实质是对对象Object的数字属性访问
